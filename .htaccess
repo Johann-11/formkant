@@ -1,0 +1,28 @@
+# Formkant – Apache-Konfiguration (GoDaddy cPanel, public_html)
+
+# Keine Verzeichnislisten anzeigen
+Options -Indexes
+
+# Eigene Fehlerseite für nicht gefundene Seiten
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) HTTPS erzwingen: http://… -> https://formkant.de/… (301)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://formkant.de%{REQUEST_URI} [L,R=301]
+
+  # 2) www.formkant.de -> formkant.de (301)
+  RewriteCond %{HTTP_HOST} ^www\.formkant\.de$ [NC]
+  RewriteRule ^ https://formkant.de%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Browser darf den Dateityp nicht erraten
+  Header always set X-Content-Type-Options "nosniff"
+  # Beim Verlassen der Seite nur die Domain als Referrer übermitteln
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  # Einbetten der Seite in Frames verbieten
+  Header always set X-Frame-Options "DENY"
+</IfModule>
