@@ -1,9 +1,7 @@
 # Formkant – statische Website (formkant.de)
 
-> **ENTWURF, vor Veröffentlichung durch den geprüften Text der IT-Recht Kanzlei oder eines Generators ersetzen**
-> (gilt für `datenschutz.html`; auch die Angaben in `impressum.html` vor dem Livegang prüfen lassen)
-
 Reines HTML5 + CSS. Kein JavaScript, keine Cookies, keine externen Ressourcen.
+Gehostet mit **GitHub Pages** (Repository `Johann-11/formkant`), Domain `formkant.de` bei **GoDaddy**.
 
 ## Dateien
 
@@ -11,53 +9,44 @@ Reines HTML5 + CSS. Kein JavaScript, keine Cookies, keine externen Ressourcen.
 |---|---|
 | `index.html` | Startseite |
 | `impressum.html` | Impressum (§ 5 DDG) |
-| `datenschutz.html` | Datenschutzerklärung (Entwurf) |
+| `datenschutz.html` | Datenschutzerklärung (eRecht24-Generator) |
 | `404.html` | Fehlerseite (nutzt absolute Pfade, wirkt daher nur auf dem Server gestylt) |
 | `css/style.css` | gemeinsames Stylesheet |
 | `img/logo.svg`, `img/favicon.svg` | Logo und Favicon |
-| `.htaccess` | HTTPS, www-Umleitung, 404-Seite, Sicherheits-Header |
+| `.htaccess` | Nur für Apache-Hosting. Wird von GitHub Pages ignoriert (HTTPS, www-Umleitung und 404 erledigt GitHub selbst) |
 | `robots.txt` | erlaubt Indexierung |
+| `.gitignore` | hält Arbeitsdateien (`formkant_*.png`) aus dem Repository |
 
-Nicht hochladen: `README.md` und die vorhandenen PNG-Dateien (`formkant_*.png`), die gehören nicht zur Website.
+## Änderungen veröffentlichen
 
-## Veröffentlichen bei GoDaddy
+1. In VS Code speichern.
+2. Quellcodeverwaltung öffnen (`Strg+Shift+G`), kurze Notiz eingeben, **Commit** klicken.
+3. **Sync Changes** klicken. Nach ca. einer Minute ist die Änderung online.
 
-1. Im GoDaddy-Konto cPanel öffnen → **Dateimanager** (oder per FTP/SFTP verbinden).
-2. In den Ordner `public_html` wechseln.
-3. Die vorhandene Standard-Startseite von GoDaddy (z. B. `index.html`, `index.php`, `default.html`) löschen oder überschreiben.
-4. Alle Website-Dateien inkl. der Ordner `css/` und `img/` hochladen. Achtung: `.htaccess` ist eine versteckte Datei – im Dateimanager unter „Einstellungen“ → „Versteckte Dateien anzeigen“ aktivieren.
-5. **SSL** im GoDaddy-Konto für `formkant.de` und `www.formkant.de` aktivieren. Erst danach greifen die HTTPS-Umleitungen sauber.
-6. Prüfen, dass alle vier Varianten mit **301** auf `https://formkant.de/` führen:
-   - `http://formkant.de`
-   - `http://www.formkant.de`
-   - `https://www.formkant.de`
-   - `https://formkant.de` (Ziel)
-7. Eine nicht existierende Adresse aufrufen (z. B. `https://formkant.de/test`) → die eigene 404-Seite muss erscheinen.
+## Einrichtung GitHub Pages + GoDaddy (einmalig)
 
-**Kein Apache?** Läuft das Paket auf Windows-Hosting (IIS/Plesk), wird `.htaccess` ignoriert. Dann ist stattdessen eine `web.config` mit denselben Regeln nötig.
+1. GitHub → Repository → **Settings → Pages**: Source „Deploy from a branch“, Branch `main`, Ordner `/ (root)`.
+2. **Custom domain**: `formkant.de`.
+3. GoDaddy → formkant.de → **DNS**:
+   - A-Einträge `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (alte `@`-A- und AAAA-Einträge löschen)
+   - CNAME `www` → `Johann-11.github.io`
+4. Nach „DNS check successful“: **Enforce HTTPS** aktivieren.
+5. Prüfen: `http://formkant.de`, `http://www.formkant.de`, `https://www.formkant.de` führen auf `https://formkant.de`; eine nicht existierende Adresse zeigt die 404-Seite.
 
-## Prüfliste vor dem Livegang
+## Prüfliste
 
-- [ ] Alle Platzhalter `[[…]]` ersetzt (Suche nach `[[` darf nichts mehr finden)
-- [ ] Impressum und Datenschutzerklärung durch geprüfte Texte (IT-Recht Kanzlei/Generator) ersetzt
-- [ ] Auftragsverarbeitung (AVV/DPA) mit GoDaddy geklärt
-- [ ] Kontakt-E-Mail formkant@gmail.com (Google) im Datenschutz-Abschnitt „Kontaktaufnahme per E-Mail“ berücksichtigt; bei Wechsel auf eine eigene Domain-Adresse in index.html, impressum.html und datenschutz.html ersetzen
-- [ ] Zuständige Aufsichtsbehörde (LDI NRW) und Anschrift **vor Veröffentlichung prüfen**
-- [ ] SSL aktiv, Umleitungen (siehe oben) geprüft
-- [ ] W3C-Validator und Lighthouse auf der Live-Seite ausgeführt
+- [x] Platzhalter in Impressum und Datenschutz ersetzt
+- [x] Datenschutzerklärung aus Generator eingebaut (Hoster GitHub)
+- [x] Datenschutz: Abschnitte zu USA-Übermittlung (GitHub), Gmail und Etsy/Instagram-Links ergänzt (selbst formuliert, im Code markiert)
+- [ ] Die selbst ergänzten Abschnitte bei Gelegenheit prüfen lassen
+- [ ] Bei Änderungen (anderer Hoster, eigene E-Mail-Adresse, neue Dienste) Datenschutzerklärung neu generieren
+- [ ] W3C-Validator und Lighthouse auf der Live-Seite ausführen
 
 ## Offene Punkte
 
-| Datei | Platzhalter | Beschreibung |
+| Datei | Punkt | Beschreibung |
 |---|---|---|
 | `impressum.html` | `<!-- PLATZHALTER: weitere Pflichtangaben … -->` | Weitere Pflichtangaben laut IT-Recht Kanzlei, z. B. Wirtschafts-Identifikationsnummer |
 | `impressum.html` | Telefon | Bewusst weggelassen (keine private Nummer). Optional geschäftliche Nummer als zweiten Kontaktweg ergänzen – von Kanzlei prüfen lassen |
-| `datenschutz.html` | gesamte Datei | **ENTWURF**, durch geprüften Text ersetzen |
-| `datenschutz.html` | `[[GODADDY-VERTRAGSPARTNER UND ANSCHRIFT LAUT KONTO]]` | Vertragspartner aus dem GoDaddy-Konto/Vertrag |
-| `datenschutz.html` | `[[SERVERSTANDORT]]` | Serverstandort laut GoDaddy |
-| `datenschutz.html` | `<!-- PLATZHALTER: Hosting-Abschnitt … -->` | Vollständiger Hosting-Text inkl. ggf. Drittlandübermittlung |
-| `datenschutz.html` | `[[TEXT KONTAKTAUFNAHME PER E-MAIL]]` | Text zur Kontaktaufnahme per E-Mail |
-| `datenschutz.html` | `<!-- PLATZHALTER: Text zu externen Links … -->` | Ggf. ergänzender Text zu Etsy/Instagram-Links |
-| `datenschutz.html` | `[[TEXT BETROFFENENRECHTE]]` | Betroffenenrechte (Art. 15–21 DSGVO) |
-| `datenschutz.html` | `[[ANSCHRIFT AUFSICHTSBEHÖRDE]]` | Anschrift der LDI NRW – **vor Veröffentlichung prüfen** |
+| `datenschutz.html` | Ergänzte Abschnitte | USA-Übermittlung, Gmail, Etsy/Instagram-Links selbst formuliert – prüfen lassen |
 | `index.html` | `<!-- TODO: Produktfoto … -->` | Produktfoto `img/caesar.jpg` mit alt-Text, Breite 100 %, `loading="lazy"` |
