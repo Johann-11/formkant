@@ -343,6 +343,11 @@ address {
   margin: 0 0 0.5rem;
 }
 
+/* Footer-Links nicht mitten im Linktext umbrechen */
+.footer-inner nav a {
+  white-space: nowrap;
+}
+
 /* ---------- Größere Bildschirme ---------- */
 
 @media (min-width: 48em) {

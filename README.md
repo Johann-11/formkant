@@ -10,6 +10,7 @@ Gehostet mit **GitHub Pages** (Repository `Johann-11/formkant`), Domain `formkan
 | `index.html` | Startseite |
 | `impressum.html` | Impressum (§ 5 DDG) |
 | `datenschutz.html` | Datenschutzerklärung (eRecht24-Generator) |
+| `datenschutz-social-media.html` | Datenschutzerklärung für die Profile bei Instagram und TikTok (selbst formuliert) – im Profil-Bio verlinken |
 | `404.html` | Fehlerseite (nutzt absolute Pfade, wirkt daher nur auf dem Server gestylt) |
 | `css/style.css` | gemeinsames Stylesheet |
 | `img/logo.svg`, `img/favicon.svg` | Logo und Favicon |
@@ -38,7 +39,11 @@ Gehostet mit **GitHub Pages** (Repository `Johann-11/formkant`), Domain `formkan
 - [x] Platzhalter in Impressum und Datenschutz ersetzt
 - [x] Datenschutzerklärung aus Generator eingebaut (Hoster GitHub)
 - [x] Datenschutz: Abschnitte zu USA-Übermittlung (GitHub), Gmail und Etsy/Instagram-Links ergänzt (selbst formuliert, im Code markiert)
-- [ ] Die selbst ergänzten Abschnitte bei Gelegenheit prüfen lassen
+- [x] Wirtschafts-Identifikationsnummer im Impressum
+- [x] Hosting-Absatz angepasst (kein AV-Vertrag mit GitHub)
+- [x] Datenschutzerklärung für Social-Media-Profile angelegt und im Footer verlinkt
+- [ ] Impressum und Social-Media-Datenschutz in den Profilen bei Instagram und TikTok verlinken
+- [ ] Die selbst ergänzten bzw. selbst formulierten Texte bei Gelegenheit prüfen lassen
 - [ ] Bei Änderungen (anderer Hoster, eigene E-Mail-Adresse, neue Dienste) Datenschutzerklärung neu generieren
 - [ ] W3C-Validator und Lighthouse auf der Live-Seite ausführen
 
@@ -46,7 +51,7 @@ Gehostet mit **GitHub Pages** (Repository `Johann-11/formkant`), Domain `formkan
 
 | Datei | Punkt | Beschreibung |
 |---|---|---|
-| `impressum.html` | `<!-- PLATZHALTER: weitere Pflichtangaben … -->` | Weitere Pflichtangaben laut IT-Recht Kanzlei, z. B. Wirtschafts-Identifikationsnummer |
-| `impressum.html` | Telefon | Bewusst weggelassen (keine private Nummer). Optional geschäftliche Nummer als zweiten Kontaktweg ergänzen – von Kanzlei prüfen lassen |
-| `datenschutz.html` | Ergänzte Abschnitte | USA-Übermittlung, Gmail, Etsy/Instagram-Links selbst formuliert – prüfen lassen |
+| `impressum.html` | Telefon | Bewusst weggelassen (keine private Nummer). Für Fernabsatz über Etsy eine Zweitnummer besorgen und dort bzw. hier eintragen |
+| `datenschutz.html` | Ergänzte Abschnitte | USA-Übermittlung, Gmail, Etsy/Instagram-Links, Hosting-Satz selbst formuliert – prüfen lassen |
+| `datenschutz-social-media.html` | Ganze Seite | Selbst formuliert – prüfen lassen. TikTok: Profil-Link ergänzen, sobald vorhanden |
 | `index.html` | `<!-- TODO: Produktfoto … -->` | Produktfoto `img/caesar.jpg` mit alt-Text, Breite 100 %, `loading="lazy"` |
